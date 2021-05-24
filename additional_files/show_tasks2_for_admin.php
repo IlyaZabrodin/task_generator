@@ -53,10 +53,11 @@
               <img src="../project/user.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="show_tasks.php">Главная</a></li>
-              <li><a class="dropdown-item" href="show_tasks2.php">Текущий счёт</a></li>
-              <li><a class="dropdown-item" href="maths.php">Математика</a></li>
-              <li><a class="dropdown-item" href="informatics.php">Информатика</a></li>
+              <li><a class="dropdown-item" href="show_tasks_for_admin.php">Главная</a></li>
+              <li><a class="dropdown-item" href="show_tasks2_for_admin.php">Текущий счёт</a></li>
+              <li><a class="dropdown-item" href="maths_for_admin.php">Математика</a></li>
+              <li><a class="dropdown-item" href="informatics_for_admin.php">Информатика</a></li>
+              <li><a class="dropdown-item" href="add_task.php">Добавить задание</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="../index.html">Выйти</a></li>
             </ul>
@@ -66,9 +67,22 @@
     </header>
     
     <?php
-        $k = 3;
-        echo "Математика: ";
-        echo $k;
+        if (isset($_POST['sub'])) {
+          $link = mysqli_connect("localhost", "root", "", "task_generator") 
+              or die("Ошибка " . mysqli_error($link)); 
+          $task = htmlentities(mysqli_real_escape_string($link, $_POST['task']));
+          $exp = htmlentities(mysqli_real_escape_string($link, $_POST['explanation']));
+          $ca = htmlentities(mysqli_real_escape_string($link, $_POST['correct_answer']));
+          $ids = htmlentities(mysqli_real_escape_string($link, $_POST['ids']));
+   
+          $query ="INSERT INTO tests (id, id_us, explanation, correct_answer, id_sub) VALUES (NULL, '$task','$exp', '$ca', '$ids')";
+   
+          $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+          if($result) {
+              echo "<span style='color:blue;'>Задания добавлены</span>";
+          }
+          mysqli_close($link);
+      }
       ?>
 
     <!-- Optional JavaScript; choose one of the two! -->

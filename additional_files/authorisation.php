@@ -15,9 +15,9 @@
         $query = $mysqli->query("SELECT id FROM user WHERE username='$un' AND passw='$pas' ");
         $data = mysqli_fetch_array($query);
         if(mysqli_num_rows($query) > 0) {
-          if ($un="Admin") {
+          if ($un=="Admin") {
             setcookie("id", $data['id'], time()+60*60*24);
-            header("Location: show_tasks_for admin.php");
+            header("Location: show_tasks_for_admin.php");
             exit();
           } else {
             setcookie("id", $data['id'], time()+60*60*24);

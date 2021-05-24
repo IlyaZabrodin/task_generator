@@ -11,6 +11,11 @@
     <title>Task generator</title>
   </head>
   <body>
+    <style type="text/css">
+      BODY {
+       background: url(../project/back_color2.jpg) repeat-x;
+      }
+    </style>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="bootstrap" viewBox="0 0 118 94">
         <title>Bootstrap</title>
@@ -45,7 +50,7 @@
           </a>
   
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 link-secondary">Ваш текущий счёт</a></li>
+            <li><a href="#" class="nav-link px-2 link-secondary">Главная</a></li>
           </ul>
   
           <div class="dropdown text-end">
@@ -53,10 +58,11 @@
               <img src="../project/user.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="show_tasks.php">Главная</a></li>
-              <li><a class="dropdown-item" href="show_tasks2.php">Текущий счёт</a></li>
-              <li><a class="dropdown-item" href="maths.php">Математика</a></li>
-              <li><a class="dropdown-item" href="informatics.php">Информатика</a></li>
+              <li><a class="dropdown-item" href="show_tasks_for_admin.php">Главная</a></li>
+              <li><a class="dropdown-item" href="show_tasks2_for_admin.php">Текущий счёт</a></li>
+              <li><a class="dropdown-item" href="maths_for_admin.php">Математика</a></li>
+              <li><a class="dropdown-item" href="informatics_for_admin.php">Информатика</a></li>
+              <li><a class="dropdown-item" href="add_task.php">Добавить задание</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="../index.html">Выйти</a></li>
             </ul>
@@ -65,11 +71,7 @@
       </div>
     </header>
     
-    <?php
-        $k = 3;
-        echo "Математика: ";
-        echo $k;
-      ?>
+    
 
     <!-- Optional JavaScript; choose one of the two! -->
 

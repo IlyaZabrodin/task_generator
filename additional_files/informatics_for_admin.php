@@ -45,7 +45,7 @@
           </a>
   
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 link-secondary">Ваш текущий счёт</a></li>
+            <li><a href="#" class="nav-link px-2 link-secondary">Математика</a></li>
           </ul>
   
           <div class="dropdown text-end">
@@ -53,10 +53,11 @@
               <img src="../project/user.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="show_tasks.php">Главная</a></li>
-              <li><a class="dropdown-item" href="show_tasks2.php">Текущий счёт</a></li>
-              <li><a class="dropdown-item" href="maths.php">Математика</a></li>
-              <li><a class="dropdown-item" href="informatics.php">Информатика</a></li>
+            <li><a class="dropdown-item" href="show_tasks_for_admin.php">Главная</a></li>
+              <li><a class="dropdown-item" href="show_tasks2_for_admin.php">Текущий счёт</a></li>
+              <li><a class="dropdown-item" href="maths_for_admin.php">Математика</a></li>
+              <li><a class="dropdown-item" href="informatics_for_admin.php">Информатика</a></li>
+              <li><a class="dropdown-item" href="add_task.php">Добавить задание</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="../index.html">Выйти</a></li>
             </ul>
@@ -64,12 +65,36 @@
         </div>
       </div>
     </header>
-    
-    <?php
-        $k = 3;
-        echo "Математика: ";
-        echo $k;
+
+    <div class="container clearfix">
+        <div class="titel-bn-big-blue">
+            <h1>Задачи Информатики</h1>
+        </div>
+    </div>
+
+    <div>
+      <?php
+        $str= mysqli_connect('localhost', 'root', '', 'task_generator');
+        $m = 2;
+        $select= mysqli_query($str, "SELECT task, explanation, correct_answer FROM `task_generator`.`task` WHERE id_sub='$m';");
+        while ($r= mysqli_fetch_array($select)) {
+          ?>
+          <div class="container clearfix">
+            <div class="titel-bn-big-blue">
+            <?php
+            echo $r['task'];
+            ?>
+            <form method="post">
+              <input type="text" name="answ">
+            </form>
+            </div>
+          </div>
+          <?php
+        }
+        mysqli_close($str);
       ?>
+      <button class="w-10 btn btn-lg btn-primary" type="submit" onclick="window.location.href='show_tasks2_for_admin.php';">Проверить</button>
+      <button class="w-10 btn btn-lg btn-primary" type="submit" onclick="window.location.href='infs_answers.php';">Хочу посмотреть разбор заданий</button>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
