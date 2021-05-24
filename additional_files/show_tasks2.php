@@ -69,6 +69,7 @@
         $k = 3;
         echo "Математика: ";
         echo $k;
+        echo "<br>Информатика: ";
       ?>
 
     <!-- Optional JavaScript; choose one of the two! -->
